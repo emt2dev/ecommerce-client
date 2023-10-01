@@ -7,7 +7,7 @@ import { catchError } from 'rxjs';
   providedIn: 'root'
 })
 export class CompanyService {
-  API_ProductCategories = "https://localhost:7212/api/Product/categories";
+  readonly API_ProductCategories = "http://localhost:5254/api/Product/categories";
 
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   

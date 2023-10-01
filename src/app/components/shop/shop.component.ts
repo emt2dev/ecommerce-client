@@ -22,10 +22,11 @@ export class ShopComponent implements OnInit {
   ProductCategoriesList: Array<String> = [];
 
   constructor(private CompanyService: CompanyService) {}
+
   async ngOnInit(): Promise<void> {
     console.log("start");
     await delay(5000);
-    await this.CompanyService.GetProductCategories()
+    this.CompanyService.GetProductCategories()
       .subscribe(async(data: any) => {
         this.ProductCategoriesList = data;
         await this.ProductCategoriesList;

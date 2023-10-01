@@ -35,8 +35,8 @@
                 </h2>
                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
                   <div class="accordion-body">
-                    <ul class="list-unstyled">
-                      <li *ngFor="let Category of ProductCategoriesList">
+                    <ul class="list-unstyled" *ngIf="ProductCategoriesList">
+                      <li  *ngFor="let Category of ProductCategoriesList">
                         <a href="#" class="text-dark">{{ Category }}</a>
                       </li>
                     </ul>

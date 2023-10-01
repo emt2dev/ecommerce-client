@@ -32,7 +32,8 @@ import { UserComponent } from './components/dashboard/user/user.component';
 import { AdminComponent } from './components/dashboard/admin/admin.component';
 import { ProductcardComponent } from './modules/scope/shop/productcard/productcard.component';
 import { LeftpanelComponent } from './modules/scope/shop/leftpanel/leftpanel.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth/auth.interceptor';
 
 
 @NgModule({
@@ -74,7 +75,11 @@ import { HttpClientModule } from '@angular/common/http';
     SeasonalComponent,
     HolidayComponent,
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
