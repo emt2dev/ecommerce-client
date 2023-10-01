@@ -1,7 +1,7 @@
 <div class="container pt-5 mt-5">
     <p>cart works!</p>
 <h5>cart total goes here</h5>
-<div>
+<div class="table-responsive">
     <table class="table table-striped">
       <thead>
           <tr>
@@ -20,9 +20,9 @@
               <td>5.99</td>
               <td>
                   <div class="btn-group" role="group">
-                      <button id="increment1" class="btn btn-success">+</button>
-                      <button id="decrement1" class="btn btn-warning">-</button>
-                      <button id="remove1" class="btn btn-danger">x</button>
+                      <button id="increment1" class="btn btn-success">+1</button>
+                      <button id="decrement1" class="btn btn-warning">-1</button>
+                      <button id="removeAll" class="btn btn-danger">Remove</button>
                   </div>
               </td>
           </tr>
@@ -30,7 +30,7 @@
   </table>
     <div class="text-center mt-3">
         <button id="emptyCart" class="btn btn-outline-secondary me-3">Empty Cart</button>
-        <button id="orderPickup" class="btn btn-info">Order For Delivery</button>
+        <button id="orderPickup" class="btn btn-info mt-1">Order For Delivery</button>
     </div>
     <div class="text-center pt-3">
       <h3>All major payment methods are accepted</h3>

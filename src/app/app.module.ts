@@ -30,6 +30,10 @@ import { SalesComponent } from './modules/scope/dashboard/admin/sales/sales.comp
 import { CrudproductsComponent } from './components/admin/crudproducts/crudproducts.component';
 import { UserComponent } from './components/dashboard/user/user.component';
 import { AdminComponent } from './components/dashboard/admin/admin.component';
+import { ProductcardComponent } from './modules/scope/shop/productcard/productcard.component';
+import { LeftpanelComponent } from './modules/scope/shop/leftpanel/leftpanel.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -41,12 +45,15 @@ import { AdminComponent } from './components/dashboard/admin/admin.component';
     UserComponent,
     AdminComponent,
     ReportsComponent,
+    ProductcardComponent,
+    LeftpanelComponent,
     SalesComponent,
     ProductsComponent,
     OrdersComponent,
     PanelComponent,
     CrudproductsComponent,
     InventoryComponent,
+    HttpClientModule,
     ContactComponent,
     ContactmodalComponent,
     ShopComponent,

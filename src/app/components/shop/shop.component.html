@@ -36,14 +36,9 @@
                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
                   <div class="accordion-body">
                     <ul class="list-unstyled">
-                      <li><a href="#" class="text-dark">Electronics </a></li>
-                      <li><a href="#" class="text-dark">Home items </a></li>
-                      <li><a href="#" class="text-dark">Books, Magazines </a></li>
-                      <li><a href="#" class="text-dark">Men's clothing </a></li>
-                      <li><a href="#" class="text-dark">Interiors items </a></li>
-                      <li><a href="#" class="text-dark">Underwears </a></li>
-                      <li><a href="#" class="text-dark">Shoes for men </a></li>
-                      <li><a href="#" class="text-dark">Accessories </a></li>
+                      <li *ngFor="let Category of ProductCategoriesList">
+                        <a href="#" class="text-dark">{{ Category }}</a>
+                      </li>
                     </ul>
                   </div>
                 </div>
