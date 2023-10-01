@@ -21,10 +21,15 @@ import { CartmodalComponent } from './modules/scope/full/cartmodal/cartmodal.com
 import { CartComponent } from './components/cart/cart.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ContactmodalComponent } from './modules/scope/full/contactmodal/contactmodal.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductsComponent } from './modules/scope/dashboard/admin/products/products.component';
 import { OrdersComponent } from './modules/scope/dashboard/admin/orders/orders.component';
 import { InventoryComponent } from './modules/scope/dashboard/admin/inventory/inventory.component';
+import { PanelComponent } from './modules/scope/dashboard/admin/panel/panel.component';
+import { ReportsComponent } from './modules/scope/dashboard/admin/reports/reports.component';
+import { SalesComponent } from './modules/scope/dashboard/admin/sales/sales.component';
+import { CrudproductsComponent } from './components/admin/crudproducts/crudproducts.component';
+import { UserComponent } from './components/dashboard/user/user.component';
+import { AdminComponent } from './components/dashboard/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -33,9 +38,14 @@ import { InventoryComponent } from './modules/scope/dashboard/admin/inventory/in
   imports: [
     BrowserModule,
     EntryComponent,
-    DashboardComponent,
+    UserComponent,
+    AdminComponent,
+    ReportsComponent,
+    SalesComponent,
     ProductsComponent,
     OrdersComponent,
+    PanelComponent,
+    CrudproductsComponent,
     InventoryComponent,
     ContactComponent,
     ContactmodalComponent,

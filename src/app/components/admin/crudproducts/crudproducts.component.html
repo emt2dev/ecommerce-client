@@ -1,0 +1,117 @@
+<div class="container pt-5 mt-5">
+    <div class="accordion" id="productAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button
+                class="accordion-button"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                Create New Digital Product
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="your-api-endpoint" method="POST">
+                                <!-- Product Name -->
+                                <div class="form-group">
+                                    <label for="productName">Product Name:</label>
+                                    <input type="text" class="form-control" id="productName" name="Name" required>
+                                </div>
+        
+                                <!-- Product Description -->
+                                <div class="form-group">
+                                    <label for="productDescription">Product Description:</label>
+                                    <textarea class="form-control" id="productDescription" name="Description" rows="4" required></textarea>
+                                </div>
+        
+                                <!-- Keywords -->
+                                <div class="form-group">
+                                    <label for="keywords">Keywords (separated by commas):</label>
+                                    <input type="text" class="form-control" id="keywords" name="Keywords">
+                                </div>
+        
+                                <!-- Tax Code Key -->
+                                <div class="form-group">
+                                    <label for="taxCodeKey">Tax Code Key:</label>
+                                    <input type="text" class="form-control" id="taxCodeKey" name="TaxCodeKey">
+                                </div>
+        
+                                <!-- Category -->
+                                <div class="form-group">
+                                    <label for="category">Category:</label>
+                                    <input type="text" class="form-control" id="category" name="Category">
+                                </div>
+        
+                                <!-- Submit Button -->
+                                <button type="submit" class="btn btn-primary">Create Product</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button
+                    class="accordion-button"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo"
+                >
+                    Create Shipped Product
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-mdb-parent="#productAccordion">
+                <div class="accordion-body">
+                    <div class="card">
+                        <div class="card-body">
+                    <!-- Second Accordion Content (Form) -->
+                            <form action="your-api-endpoint" method="POST">
+                                <!-- Product Name -->
+                                <div class="form-group">
+                                    <label for="productName2">Product Name:</label>
+                                    <input type="text" class="form-control" id="productName2" name="Name" required>
+                                </div>
+
+                                <!-- Product Description -->
+                                <div class="form-group">
+                                    <label for="productDescription2">Product Description:</label>
+                                    <textarea class="form-control" id="productDescription2" name="Description" rows="4" required></textarea>
+                                </div>
+
+                                <!-- Keywords -->
+                                <div class="form-group">
+                                    <label for="keywords2">Keywords (separated by commas):</label>
+                                    <input type="text" class="form-control" id="keywords2" name="Keywords">
+                                </div>
+
+                                <!-- Tax Code Key -->
+                                <div class="form-group">
+                                    <label for="taxCodeKey2">Tax Code Key:</label>
+                                    <input type="text" class="form-control" id="taxCodeKey2" name="TaxCodeKey">
+                                </div>
+
+                                <!-- Category -->
+                                <div class="form-group">
+                                    <label for="category2">Category:</label>
+                                    <input type="text" class="form-control" id="category2" name="Category">
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button type="submit" class="btn btn-primary">Create Product</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

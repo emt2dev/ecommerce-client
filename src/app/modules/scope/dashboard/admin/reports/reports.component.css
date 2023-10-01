@@ -1,0 +1,35 @@
+.scrollable-cell {
+    max-width: 300px;
+    overflow: hidden;
+}
+
+.scroll-content {
+    overflow: auto;
+    max-height: 100px; /* Adjust the height as needed */
+}
+
+/* Add this to your CSS file or within a <style> tag in your HTML */
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff; /* Blue color for the amount */
+  }
+  
+  .list-group-item {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
