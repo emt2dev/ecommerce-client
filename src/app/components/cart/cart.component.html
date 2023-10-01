@@ -1,0 +1,43 @@
+<div class="container pt-5 mt-5">
+    <p>cart works!</p>
+<h5>cart total goes here</h5>
+<div>
+    <table class="table table-striped">
+      <thead>
+          <tr>
+              <th scope="col">Quantity</th>
+              <th scope="col">Name</th>
+              <th scope="col">Style</th>
+              <th scope="col">Price</th>
+              <th scope="col">Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <th scope="row">5</th>
+              <td>Item Name</td>
+              <td>Style description</td>
+              <td>5.99</td>
+              <td>
+                  <div class="btn-group" role="group">
+                      <button id="increment1" class="btn btn-success">+</button>
+                      <button id="decrement1" class="btn btn-warning">-</button>
+                      <button id="remove1" class="btn btn-danger">x</button>
+                  </div>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+    <div class="text-center mt-3">
+        <button id="emptyCart" class="btn btn-outline-secondary me-3">Empty Cart</button>
+        <button id="orderPickup" class="btn btn-info">Order For Delivery</button>
+    </div>
+    <div class="text-center pt-3">
+      <h3>All major payment methods are accepted</h3>
+    </div>
+  </div>
+</div>
+
+<div class="mt-5">
+    <app-gallery></app-gallery>
+</div>
