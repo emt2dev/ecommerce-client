@@ -7,12 +7,17 @@ import { catchError } from 'rxjs';
   providedIn: 'root'
 })
 export class CompanyService {
-  readonly API_ProductCategories = "http://localhost:5254/api/Product/categories";
+  // readonly API_ProductCategories = "https://localhost:7212/api/Product/categories";
+  readonly API_ProductCategories = "/api/Product/categories";
 
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   
   constructor(public http: HttpClient, public router: Router) {}
 
+  GetProductCategories() {
+    return this.http.get<Array<String>>(`${this.API_ProductCategories}`, {headers:this.headers}).pipe(catchError(this.ErrorHandler));
+  }
+  
   ErrorHandler(error: HttpErrorResponse) {
     let msg = '';
     if (error.error instanceof ErrorEvent) {
@@ -25,7 +30,5 @@ export class CompanyService {
     return msg;
   }
   
-  GetProductCategories() {
-    return this.http.get<Array<String>>(`${this.API_ProductCategories}`, {headers:this.headers}).pipe(catchError(this.ErrorHandler));
-  }
+  
 }
