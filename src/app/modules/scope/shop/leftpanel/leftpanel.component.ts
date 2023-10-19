@@ -14,7 +14,7 @@ import { CompanyService } from 'src/app/services/company/company.service';
   styleUrls: ['./leftpanel.component.css']
 })
 export class LeftpanelComponent implements OnInit {
-  ProductCategoriesList: Array<String> = [];
+  ProductCategoriesList: Array<String> = ["TestOne","TestTwo"];
 
   /**
    *
@@ -23,11 +23,11 @@ export class LeftpanelComponent implements OnInit {
     
   }
   async ngOnInit(): Promise<void> {
-    await delay(5000);
-    await this.CompanyService.GetProductCategories()
-      .subscribe(async(data: any) => {
-        this.ProductCategoriesList = data;
-        await this.ProductCategoriesList;
-      });
+    // await delay(5000);
+    // await this.CompanyService.GetProductCategories()
+    //   .subscribe(async(data: any) => {
+    //     this.ProductCategoriesList = data;
+    //     await this.ProductCategoriesList;
+    //   });
   }
 }
