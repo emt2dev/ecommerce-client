@@ -50,7 +50,6 @@ export class ShopComponent implements OnInit {
 
   PaginationTestNext() {
     if(this.CurrentPage !== (this.ProductsTestList.length)) {
-      this.ProductsPaging = this.ProductsFilterList[this.CurrentPage];
       this.CurrentPage++;
     }
   }
