@@ -6,6 +6,7 @@ import { ProductcardComponent } from 'src/app/modules/scope/shop/productcard/pro
 
 import { CompanyService } from 'src/app/services/company/company.service';
 import { SampleProductModel } from "src/app/models/sampleProductModel";
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-shop',
@@ -14,26 +15,45 @@ import { SampleProductModel } from "src/app/models/sampleProductModel";
     LeftpanelComponent,
     ProductcardComponent,
     CommonModule,
+    FormsModule,
   ],
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent implements OnInit {
   
-  sampleInstance = new SampleProductModel(1, "Sample Title", "Sample Description", 9.99, "TestOne");
-  anotherSampleInstance = new SampleProductModel(2, "Another Title", "Another Description", 19.99, "TestTwo");
+  // Sample Product Instances
+  sampleInstance = new SampleProductModel(1, "Sample Title", "Sample Description", 9.99, "TestOne", 2.5);
+  anotherSampleInstance = new SampleProductModel(2, "Another Title", "Another Description", 19.99, "TestTwo", 4.5);
   
-  ProductCategoriesList: Array<String> = ["TestOne","TestTwo"];
+  // Sort Option
+  selectedSortOption: string = "";
+
+  // Product Category Array
+  ProductCategoriesList: Array<String> = ["none","TestOne","TestTwo"];
+
+  // Sample Products Array
   ProductsTestList: Array<SampleProductModel> = [this.sampleInstance, this.anotherSampleInstance];
   
+  // Sample Sort Array
   ProductsFilterList: Array<SampleProductModel> = [this.sampleInstance, this.anotherSampleInstance];
 
+
+  // pagination
+
+
+
+
+
+  
   constructor(private CompanyService: CompanyService) {}
 
   
   async ngOnInit(): Promise<void> {
     console.log("start");
     await delay(5000);
+
+    // Below is the logic to obtain categories from api
     // this.CompanyService.GetProductCategories()
     //   .subscribe(async(data: any) => {
     //     this.ProductCategoriesList = data;
@@ -41,8 +61,18 @@ export class ShopComponent implements OnInit {
     //   });
   }
 
+  SortedFilter() {
+    if (this.selectedSortOption !== "" && this.selectedSortOption === "sortByPriceAscending")
+      this.ProductsFilterList = this.ProductsTestList.sort((a, b) => a.price - b.price);
+    else if (this.selectedSortOption !== "" && this.selectedSortOption === "sortByRatingsDescending")
+      this.ProductsFilterList = this.ProductsTestList.sort((a, b) => b.rating - a.rating);
+  }
+
   CategoryFilter(keyword: String) {
-    this.ProductsFilterList = this.ProductsTestList.filter(obj => obj.keyword === keyword);
+    if(keyword.toLowerCase() == "none")
+      this.ProductsFilterList = this.ProductsTestList;
+    else
+      this.ProductsFilterList = this.ProductsTestList.filter(obj => obj.keyword === keyword);
   }
  
 }
