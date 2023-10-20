@@ -25,6 +25,7 @@ export class ShopComponent implements OnInit {
   // Sample Product Instances
   sampleInstance = new SampleProductModel(1, "Sample Title", "Sample Description", 9.99, "TestOne", 2.5);
   anotherSampleInstance = new SampleProductModel(2, "Another Title", "Another Description", 19.99, "TestTwo", 4.5);
+  anotherSampleInstance2 = new SampleProductModel(3, "Third Title", "Third Description", 19.99, "TestTwo", 2.5);
   
   // Sort Option
   selectedSortOption: string = "";
@@ -33,21 +34,26 @@ export class ShopComponent implements OnInit {
   ProductCategoriesList: Array<String> = ["none","TestOne","TestTwo"];
 
   // Sample Products Array
-  ProductsTestList: Array<SampleProductModel> = [this.sampleInstance, this.anotherSampleInstance];
+  ProductsTestList: Array<SampleProductModel> = [this.sampleInstance, this.anotherSampleInstance, this.anotherSampleInstance2];
   
   // Sample Sort Array
-  ProductsFilterList: Array<SampleProductModel> = [this.sampleInstance, this.anotherSampleInstance];
+  ProductsFilterList: Array<SampleProductModel> = [this.sampleInstance, this.anotherSampleInstance, this.anotherSampleInstance2];
+  ProductsPaging: Array<SampleProductModel> = [];
 
+  // Sample Total Products Pagination
+  TotalPagesAvailable: number = 3;
+  CurrentPage: number = 1;
+  PreviousPage: number = 1;
+  NextPage: number = 2;
 
-  // pagination
-
-
-
-
-
-  
   constructor(private CompanyService: CompanyService) {}
 
+  PaginationTestNext() {
+    if(this.CurrentPage !== (this.ProductsTestList.length)) {
+      this.ProductsPaging = this.ProductsFilterList[this.CurrentPage];
+      this.CurrentPage++;
+    }
+  }
   
   async ngOnInit(): Promise<void> {
     console.log("start");
@@ -74,5 +80,7 @@ export class ShopComponent implements OnInit {
     else
       this.ProductsFilterList = this.ProductsTestList.filter(obj => obj.keyword === keyword);
   }
+
+  
  
 }
