@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { delay } from 'rxjs';
+import { ProductDTO } from 'src/app/models/ProductDTO';
+import { CompanyService } from 'src/app/services/company/company.service';
 
 @Component({
   selector: 'app-productcard',
@@ -7,5 +10,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./productcard.component.css']
 })
 export class ProductcardComponent {
+  ProductList: Array<ProductDTO> = [];
 
+  /**
+   *
+   */
+  constructor(private CompanyService: CompanyService) {}
+  
+  async ngOnInit(): Promise<void> {
+    await delay(5000);
+    await this.CompanyService.GetProducts()
+    .subscribe(async (data: any) => {
+      this.ProductList = data;
+      await this.ProductList;
+    });
+  }
 }

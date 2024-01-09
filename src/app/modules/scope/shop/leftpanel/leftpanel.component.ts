@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { delay } from 'rxjs';
+import { CategoryDTO } from 'src/app/models/CategoryDTO';
 import { CompanyService } from 'src/app/services/company/company.service';
 
 
@@ -14,20 +15,19 @@ import { CompanyService } from 'src/app/services/company/company.service';
   styleUrls: ['./leftpanel.component.css']
 })
 export class LeftpanelComponent implements OnInit {
-  ProductCategoriesList: Array<String> = [];
+  ProductCategoriesList: Array<string> = [];
 
   /**
    *
    */
-  constructor(private CompanyService: CompanyService) {
-    
-  }
+  constructor(private CompanyService: CompanyService) {}
+  
   async ngOnInit(): Promise<void> {
     await delay(5000);
     await this.CompanyService.GetProductCategories()
-      .subscribe(async(data: any) => {
-        this.ProductCategoriesList = data;
-        await this.ProductCategoriesList;
-      });
+    .subscribe(async (data: any) => {
+      this.ProductCategoriesList = data;
+      await this.ProductCategoriesList;
+    });
   }
 }
