@@ -12,7 +12,8 @@ export class ProductDTO {
       public updatedBy: string,
       public companyId: number,
       public taxCode: string,
-      public categoryId: number
+      public categoryId: number,
+      public seo: string,
     ) {}
   }
   

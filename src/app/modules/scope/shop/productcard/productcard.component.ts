@@ -19,7 +19,7 @@ export class ProductcardComponent {
   
   async ngOnInit(): Promise<void> {
     await delay(5000);
-    await this.CompanyService.GetProducts()
+    await this.CompanyService.GetAvailableCompanyProducts()
     .subscribe(async (data: any) => {
       this.ProductList = data;
       await this.ProductList;

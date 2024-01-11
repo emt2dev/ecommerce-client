@@ -3,13 +3,13 @@
         <div class="row gx-5">
             <aside class="col-lg-6">
               <div class="border rounded-4 mb-3 d-flex justify-content-center">
-                <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image" href="{{SelectedImage}}">
-                  <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="{{SelectedImage}}" />
+                <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image" href="{{SelectedImage}}" (error)="handleImageError($event)" alt="Product Image">
+                  <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="{{SelectedImage}}" (error)="handleImageError($event)" alt="Product Image" />
                 </a>
               </div>
               <div class="d-flex justify-content-center mb-3">
                 <a *ngFor="let StyleImage of SelectedStyle.productImageUrls" data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="#" class="item-thumb">
-                  <img width="60" height="60" class="rounded-2" src="{{ StyleImage }}" />
+                  <img width="60" height="60" class="rounded-2" src="{{ StyleImage }}" alt="Product Image" />
                 </a>
               </div>
               <!-- thumbs-wrap.// -->
@@ -35,25 +35,16 @@
                   <span class="text-success ms-2">In stock</span>
                 </div> -->
       
-                <div class="mb-3">
-                  <span class="h5">{{ Price }}</span>
-                  <span class="text-muted">/per box</span>
-                </div>
-      
                 <p>
                   {{ Product.product.description }}
                 </p>
       
                 <div class="row">
                   <dt class="col-3">Specifics</dt>
-                  <dd class="col-9"> {{ SelectedStyle.description }}</dd>
-      
-
-                  <dt class="col-3">Price</dt>                  
-                  <dd class="col-9">{{ SelectedStyle.currentPrice }}</dd>
-      
-                  <dd class="col-12" *ngIf="SelectedStyle.orderCount > 0">Purchased {{SelectedStyle.orderCount}} times!</dd>
-                  <dd class="col-12" *ngIf="SelectedStyle.cartCount > 0">In {{SelectedStyle.cartCount}} carts!</dd>
+                  <dd class="col-9"> {{ Description }}</dd>
+                  
+                  <dt class="col-3">Price</dt>
+                  <dd class="col-9">{{ Price }}</dd>         
                 </div>
       
                 <hr />
@@ -61,8 +52,9 @@
                 <div class="row mb-4">
                   <div class="col-md-4 col-6 mb-5 mt-3">
                     <label class="mb-2">Size</label>
-                    <select class="form-select border border-secondary" style="height: 3rem;" (change)="OnChange($event)" *ngFor="let Style of Product.styles">
-                      <option value="{{ Style }}">{{ Style.name }}</option>
+                    <!-- Assuming Style has an 'id' property, change 'id' to the actual property used as the unique identifier -->
+                    <select class="form-select border border-secondary" style="height: 3rem;" (change)="OnChange($event)">
+                      <option *ngFor="let Style of Product.styles" [value]="Style">{{ Style.name }}</option>
                     </select>
                   </div>
     
