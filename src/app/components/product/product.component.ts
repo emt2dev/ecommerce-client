@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, delay } from 'rxjs';
 import { ProductDTO } from 'src/app/models/ProductDTO';
@@ -10,6 +10,7 @@ import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
   selector: 'app-product',
+  template: `<dd class="col-9">{{ Price }} <strong>|</strong> {{ Description }}</dd>`,
   standalone: true,
   imports: [
     CommonModule,
@@ -18,19 +19,21 @@ import { ProductService } from 'src/app/services/product/product.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  Product!: ProductWithStyleDTO;
+  Product: ProductWithStyleDTO | any;
   TestParams: Number | undefined;
-  Price: Number = 0.00;
-  SelectedStyle!: StyleDTO;
-  SelectedImage: string = '';
-  Description: string = '';
+  // Price: Number = 0.00;
+  SelectedImage: string = 'https://placehold.co/600x400';
+  ImageUrls: Array<string> = [];
+  // Description: string = '';
   fallbackImageUrl: string = 'https://placehold.co/600x400';
-
+  @Input() Price: Number = 0.00;
+  @Input() Description: string = '';
+  SelectedStyle: StyleDTO | any;
 
   // private selectedProductSource = new BehaviorSubject<any>(null);
   // selectedProduct$ = this.selectedProductSource.asObservable();
 
-  constructor(private route: ActivatedRoute, private companyService: CompanyService, private productService: ProductService) {}
+  constructor(private route: ActivatedRoute, private companyService: CompanyService, private productService: ProductService, private changeDet: ChangeDetectorRef) {}
 
   // async ngOnInit(): Promise<void> {
   //   // Get product details from the shared service
@@ -55,13 +58,31 @@ export class ProductComponent implements OnInit {
       await delay(5000);
       this.companyService.GetProductDetails(productId).subscribe(async(data: any) => {
         this.Product = data;
+        await delay(5000);
         await this.Product;
-        this.Description = this.Product.styles[0].description;
-        this.Price = this.Product.styles[0].currentPrice;
-        this.SelectedImage = this.Product.styles[0].productImageUrls[0];
-        this.SelectedStyle = this.Product.styles[0];
+        console.log(`Product Data: ${JSON.stringify(this.Product)}`)
+
+        const firstStyle = this.Product.styles[0];
+
+        console.log(`First Style: ${JSON.stringify(firstStyle)}`)
+        this.Description = firstStyle.description;
+        this.Price = firstStyle.currentPrice;
+        await delay(5000);
+        // this.ImageUrls = firstStyle.productImageUrls;
+
+        // if(this.ImageUrls.length > 0) this.SelectedImage = this.ImageUrls[0];
+       
+        this.SelectedStyle = firstStyle;
+        // this.Description = this.Product.styles[0].description;
+        // this.Price = this.Product.styles[0].currentPrice;
+        this.SelectedImage = this.SelectedStyle.productImageUrls;
+        // this.SelectedStyle = this.Product.styles[0];
         
       });
+    }
+
+    trackById(index: number, item: any): any {
+      return item.id; // Use the actual unique identifier property
     }
 
     // Alternatively, you can also get product details from the route params
@@ -74,15 +95,20 @@ export class ProductComponent implements OnInit {
    // Handle image loading errors and set the fallback image URL
    handleImageError(event: any): void {
     event.target.src = this.fallbackImageUrl;
-  }
+   }
 
-  OnChange(event: any): void {
-    const selectedStyle: StyleDTO = event.target.value;
-    console.log(`changed to style ${JSON.stringify(selectedStyle)}`);
-  
-    this.SelectedStyle = selectedStyle;
-    this.SelectedImage = selectedStyle.productImageUrls[1]; // Update to the actual property used for the image
-    this.Description = selectedStyle.description;
-    this.Price = selectedStyle.currentPrice;
+  OnChange($event: any): void {  
+    const value = parseInt($event.target.value);
+
+    console.log('Product.styles:', this.Product.styles);
+    console.log('SelectedStyle value:', value);
+    this.SelectedStyle = this.Product.styles.find((style: StyleDTO) => style.id === value);
+    console.log('SelectedStyle:', this.SelectedStyle);
+
+    this.SelectedImage = this.SelectedStyle.productImageUrls[0];
+    console.log(this.SelectedStyle);
+    // this.SelectedImage = value.prod // Update to the actual property used for the image
+    this.Description = this.SelectedStyle.description;
+    this.Price = this.SelectedStyle.currentPrice;
   }
 }
