@@ -36,7 +36,7 @@ export class CompanyService {
   }
   
   GetCompanyImages() {
-    return this.http.get<ProductWithStyleDTO>(`${this.API_CompanyImages}`, {headers:this.headers}).pipe(catchError(this.ErrorHandler));
+    return this.http.get<Array<string>>(`${this.API_CompanyImages}`, {headers:this.headers}).pipe(catchError(this.ErrorHandler));
   }
   
   GetCompanyProductsByCategory(CatName: string) {

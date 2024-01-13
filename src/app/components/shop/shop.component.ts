@@ -7,7 +7,6 @@ import { ProductcardComponent } from 'src/app/modules/scope/shop/productcard/pro
 import { CompanyService } from 'src/app/services/company/company.service';
 import { CategoryDTO } from 'src/app/models/CategoryDTO';
 import { ProductDTO } from 'src/app/models/ProductDTO';
-import { ProductService } from 'src/app/services/product/product.service';
 import { RouterModule } from '@angular/router';
 import { ProductWithStyleDTO } from 'src/app/models/ProductWithStyleDTO';
 
@@ -34,7 +33,7 @@ export class ShopComponent implements OnInit {
   currentPage = 1;
   pageSize = 15; // Number of items per page
 
-  constructor(private CompanyService: CompanyService, private productService: ProductService) {}
+  constructor(private CompanyService: CompanyService) {}
 
   async ngOnInit(): Promise<void> {
     await delay(5000);
